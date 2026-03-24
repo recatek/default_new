@@ -5,7 +5,7 @@ use proc_macro::{TokenStream, TokenTree};
 ///
 /// Specifically:
 /// ```rust,ignore
-/// impl Default for Foo {
+/// impl core::default::Default for Foo {
 ///     #[inline]
 ///     fn default() -> Self {
 ///         Self::new()
@@ -38,7 +38,7 @@ fn parse_struct_name(input: TokenStream) -> String {
 }
 
 fn generate_impl(struct_name: &str) -> TokenStream {
-    format!("impl Default for {struct_name} {{ #[inline] fn default() -> Self {{ Self::new() }} }}")
+    format!("impl core::default::Default for {struct_name} {{ #[inline] fn default() -> Self {{ Self::new() }} }}")
         .parse()
         .expect("Failed to generate TokenStream")
 }
