@@ -1,6 +1,17 @@
 extern crate proc_macro;
 use proc_macro::{TokenStream, TokenTree};
 
+/// Generates a `Default` impl for the given struct that just calls `Self::new()`.
+/// 
+/// Specifically:
+/// ```
+/// impl Default for Foo {
+///     #[inline]
+///     fn default() -> Self {
+///         Self::new()
+///     }
+/// }
+/// ```
 #[proc_macro_derive(DefaultNew)]
 pub fn derive_default_new(input: TokenStream) -> TokenStream {
     let struct_name = parse_struct_name(input);
