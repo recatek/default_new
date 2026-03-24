@@ -2,9 +2,9 @@ extern crate proc_macro;
 use proc_macro::{TokenStream, TokenTree};
 
 /// Generates a `Default` impl for the given struct that just calls `Self::new()`.
-/// 
+///
 /// Specifically:
-/// ```
+/// ```rust,ignore
 /// impl Default for Foo {
 ///     #[inline]
 ///     fn default() -> Self {
@@ -38,10 +38,7 @@ fn parse_struct_name(input: TokenStream) -> String {
 }
 
 fn generate_impl(struct_name: &str) -> TokenStream {
-    format!(
-        "impl Default for {} {{ #[inline] fn default() -> Self {{ Self::new() }} }}",
-        struct_name
-    )
-    .parse()
-    .expect("Failed to generate TokenStream")
+    format!("impl Default for {struct_name} {{ #[inline] fn default() -> Self {{ Self::new() }} }}")
+        .parse()
+        .expect("Failed to generate TokenStream")
 }
