@@ -1,6 +1,17 @@
 use default_new::DefaultNew;
 
 #[derive(DefaultNew)]
+enum Enum {
+    Variant,
+}
+
+impl Enum {
+    fn new() -> Self {
+        Enum::Variant
+    }
+}
+
+#[derive(DefaultNew)]
 struct Struct {
     value: i32,
 }
@@ -22,6 +33,11 @@ impl StructWithAttributes {
     fn new() -> Self {
         StructWithAttributes { value: 2 }
     }
+}
+
+#[test]
+fn test_enum() {
+    assert!(matches!(Enum::default(), Enum::Variant));
 }
 
 #[test]

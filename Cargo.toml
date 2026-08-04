@@ -1,6 +1,6 @@
 [package]
 name = "default_new"
-version = "0.1.0"
+version = "0.2.0"
 authors = ["recatek"]
 description = "A DefaultNew derive to generate a Default impl that just calls Self::new()."
 edition = "2024"
@@ -11,4 +11,4 @@ keywords = ["derive", "default", "new"]
 categories = ["rust-patterns", "development-tools"]
 
 [dependencies]
-default_new_macros = { version = "0.1.0", path = "macros"}
+default_new_macros = { version = "0.2.0", path = "macros"}
